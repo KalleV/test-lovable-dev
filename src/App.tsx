@@ -20,18 +20,12 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route
-            element={
-              <AdminLayout>
-                <Routes>
-                  <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="/tenants" element={<Tenants />} />
-                  <Route path="/users" element={<Users />} />
-                  <Route path="/roles" element={<Roles />} />
-                </Routes>
-              </AdminLayout>
-            }
-          />
+          <Route path="/*" element={<AdminLayout />}>
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="tenants" element={<Tenants />} />
+            <Route path="users" element={<Users />} />
+            <Route path="roles" element={<Roles />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
