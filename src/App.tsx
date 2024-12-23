@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AdminLayout } from "./components/AdminLayout";
+import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
 import Tenants from "./pages/Tenants";
 import Users from "./pages/Users";
@@ -17,14 +18,21 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <AdminLayout>
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/tenants" element={<Tenants />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/roles" element={<Roles />} />
-          </Routes>
-        </AdminLayout>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route
+            element={
+              <AdminLayout>
+                <Routes>
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/tenants" element={<Tenants />} />
+                  <Route path="/users" element={<Users />} />
+                  <Route path="/roles" element={<Roles />} />
+                </Routes>
+              </AdminLayout>
+            }
+          />
+        </Routes>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
